@@ -1,11 +1,331 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My First GitHub Pages Site</title>
+<!doctype html><html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">
+<!-- Recommended minimum; Joost -->
+<meta property="og:title" content="pilin.IT | IT-Dienstleistungen für Privat in Dresden">
+<meta property="og:description" content="Wenn Ihr Computer nicht so will, wie er soll, unterstütze ich Sie und finde eine Lösung.">
+<meta property="og:image" content="img/site-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="canonical" href="https://pos.usecue.com/p/" />
+<link rel="alternate" hreflang="en-GB" href="https://pos.usecue.com/p/" />
+<link rel="alternate" hreflang="x-default" href="https://pos.usecue.com/p/" />
+<link rel="alternate" hreflang="nl-NL" href="https://pos.usecue.com/p/nl/" />
+<link rel="icon" href="/images/favicon.svg" />
+<title>...</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {font-size: 20px; font-family: Inter, sans-serif;
+  --ratio: 1.5;
+  --measure: 60ch;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  
+  --col-bg: #000;
+}
+
+
+
+/* Intrinsic h1 sizing 
+h1 {font-size: clamp( 2.25rem, 6vw, 3rem );}
+*/
+
+
+html, body, div, header, nav, main, footer {max-inline-size: none; margin: 0;} 
+body{text-rendering:optimizeSpeed; min-height:100vh; background: var(--col-bg);}
+h2 {font-size: 2.5rem;}
+h2 {font-size: clamp(1.5rem, 2.5vw, 4rem);}
+h2 strong {font-size: 1.125em; /* font size relates to h2's font size */}
+h3 {font-size: 2rem;}
+p, h1, h2, h3, h4, h5, h6, li, figcaption {max-inline-size: var(--measure); text-wrap: balance; text-wrap: pretty;}
+img,picture{display:block;max-width:100%}
+.box {
+  /* ↓ Padding set to the first point on the modular scale */
+  padding: var(--s5);
+  /* ↓ Assumes you have a --border-thin var */
+  border: var(--border-thin) solid;
+  /* ↓ Always apply the transparent outline, for high contrast mode */
+  outline: var(--border-thin) transparent;
+  outline-offset: calc(var(--border-thin) * -1);
+  /* ↓ The light and dark color vars */
+  --color-light: #fff;
+  --color-dark: #000;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.box * {
+  /* ↓ Force colors to inherit from the parent
+  and honor inversion (below) */
+  color: inherit;
+}
+
+.box.invert {
+  /* ↓ The color vars inverted */
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
+.center {
+  max-inline-size: 60ch;
+  margin-inline: auto;
+}
+
+
+.center {
+  box-sizing: content-box;
+  max-inline-size: 60ch;
+  margin-inline: auto;
+  padding-inline-start: var(--s1);
+  padding-inline-end: var(--s1);
+}
+
+.cluster {
+  --space: 1rem;
+}
+
+.cluster > * {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  /* ↓ multiply by -1 to negate the halved value */
+  margin: calc(var(--space) / 2 * -1);
+}
+
+.cluster > * > * {
+  /* ↓ half the value, because of the 'doubling up' */
+  margin: calc(var(--space) / 2);
+}
+
+.card-wrapper {
+  container-name: card;
+  container-type: inline-size;
+}
+
+@container card (min-width: 450px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+}
+.card-title {
+  font-size: clamp(1rem, .5rem + 3cqi, 2rem);
+}
+
+/* The flex parent */
+.flex-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Register a flex item as a container */
+.flex-item {
+  container-type: inline-size;
+  flex: 1 1 390px; /* Grow to fill space, wrap at 390px */
+}
+
+/* Default Card Styles (narrow / side-by-side) */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #f4f4f4;
+}
+
+/* Once there's enough room for a full row */
+@container (min-width: 600px) {
+  .card {
+    flex-direction: row;
+    align-items: center;
+    background: #e2f0d9;
+  }
+}
+
+.cards {
+  container-name: cards;
+  container-type: inline-size;
+}
+
+@container cards (min-width: 400px) {
+  .card {
+    display: flex;
+  }
+}
+
+/* 
+<div class="cards">
+  <div class="card">
+    <div class="card-content">...</div>
+  </div>
+</div> 
+*/
+
+.list {
+  display: flex;
+  flex-wrap: balance
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Complete example of a 12-column grid layout: */
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile first */
+.container > * {
+  border: 1px solid green;
+  background-color: beige;
+  padding: 10px;
+  grid-column: col-start / span 12;
+}
+
+@media (min-width: 576px) {
+  .sidebar {
+    grid-column: col-start / span 3;
+    grid-row: 3;
+  }
+  .ads {
+    grid-column: col-start / span 3;
+  }
+  .content, .footer {
+    grid-column: col-start 4 / span 9;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav {
+    grid-column: col-start / span 2;
+    grid-row: 2 / 4;
+  }
+  .content {
+    grid-column: col-start 3 / span 8;
+    grid-row: 2 / 4;
+  }
+  .sidebar {
+    grid-column: col-start 11 / span 2;
+  }
+  .ads {
+    grid-column: col-start 11 / span 2;
+  }
+  .footer {
+    grid-column: col-start / span 12;
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+/* Native HTML/CSS Dark/Light-Switch */ 
+
+*,
+::before,
+::after {
+	transition: background-color 0.2s, color 0.2s;
+}
+
+:root {
+	--color-back: light-dark(#ffffff, #000000);
+	--color-text: light-dark(#000000, #ffffff);
+}
+
+body {
+	display: grid;
+	margin: 0;
+	min-block-size: 100svh;
+	place-content: center;
+	background-color: var(--color-back);
+	font-size: 24px;
+	font-family: system-ui, sans-serif;
+}
+
+.scheme-switcher {
+	display: flex;
+	padding: 0.125em;
+	width: fit-content;
+	border: 0.125em solid var(--color-text);
+	border-radius: calc(infinity * 1px);
+}
+
+.scheme-switcher__button {
+	margin: 0;
+	padding-block: 0.25em;
+	padding-inline: 0.5em;
+	border: none;
+	border-radius: calc(infinity * 1px);
+	background-color: transparent;
+	cursor: pointer;
+	color: var(--color-text);
+	font: inherit;
+
+	&[aria-pressed='true'] {
+		background-color: var(--color-text);
+		color: var(--color-back);
+	}
+}
+
+</style>
+
 </head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my website, hosted on GitHub Pages.</p>
+
+<body><a id="skiplink" href="#main-content">Skip to Content</a
+	<section class="scheme-switcher" aria-label="Color scheme switcher">
+		<button class="scheme-switcher__button" aria-pressed="false" value="light">
+			Light
+		</button>
+		<button class="scheme-switcher__button" aria-pressed="true" value="light dark">
+			Auto
+		</button>
+		<button class="scheme-switcher__button" aria-pressed="false" value="dark">
+			Dark
+		</button>
+	</section>
+	<script src="index.js">
+	
+	const styleLight = document.querySelector('link[rel=stylesheet][media*=prefers-color-scheme][media*=light]');
+const styleDark = document.querySelector('link[rel=stylesheet][media*=prefers-color-scheme][media*=dark]');
+
+function switchScheme(scheme) {
+	let lightMedia;
+	let darkMedia;
+
+	if (scheme === 'auto') {
+		lightMedia = '(prefers-color-scheme: light)';
+		darkMedia = '(prefers-color-scheme: dark)';
+	} else {
+		lightMedia = (scheme === 'light') ? 'all' : 'not all';
+		darkMedia = (scheme === 'dark') ? 'all' : 'not all';
+	}
+
+	styleLight.media = lightMedia;
+	styleDark.media = darkMedia;
+}
+	
+	</script>
 </body>
 </html>
